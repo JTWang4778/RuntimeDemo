@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <objc/runtime.h>
+#import "JTView.h"
 
 @interface ViewController ()
 
@@ -48,7 +49,18 @@ void imp_submethod2(id self, SEL _cmd){
     
 //    [self runtimeGetAllMethod];
     
-    [self runtimeAddClass];
+//    [self runtimeAddClass];
+    
+    [self testRuntimeAssociteObject];
+}
+
+- (void)testRuntimeAssociteObject{
+    JTView *asdf = [[JTView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    asdf.backgroundColor = [UIColor grayColor];
+    [asdf setTapActionWith:^{
+        NSLog(@"诶呀  你点我了啊 ");
+    }];
+    [self.view addSubview:asdf];
 }
 
 
