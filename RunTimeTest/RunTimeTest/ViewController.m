@@ -42,7 +42,10 @@ void imp_submethod2(id self, SEL _cmd){
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    [self getAllRegisterClass];
+    
 //    [self registerClassPair];
+    
 //    [self runtimeGetAllIvars];
     
 //    [self runtimeGetAllProperty];
@@ -54,6 +57,37 @@ void imp_submethod2(id self, SEL _cmd){
     [self testRuntimeAssociteObject];
 }
 
+
+/**
+ 获取当前系统中注册的所有类
+ */
+- (void)getAllRegisterClass{
+    Class *classArr = NULL;
+    int classCount = 0;
+    classCount = objc_getClassList(classArr, 0);
+    /*
+        malloc 是在MRC下的命令  需要把文件设置成MRC  否则编译不通过
+     */
+    if (classCount > 0) {
+        NSLog(@"%d",classCount);
+        classArr = malloc(sizeof(Class) * classCount);
+        classCount = objc_getClassList(classArr, classCount);
+        NSLog(@"%d",classCount);
+        
+        for (int i = 0; i < classCount; i++) {
+            Class class = classArr[i];
+            NSString *name = [NSString stringWithUTF8String:class_getName(class)];
+            NSLog(@"%@",name);
+        }
+        
+        free(classArr);
+    }
+}
+
+
+/**
+ 关联对象， 借此可以实现向已经存在的类添加属性的功能
+ */
 - (void)testRuntimeAssociteObject{
     JTView *asdf = [[JTView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
     asdf.backgroundColor = [UIColor grayColor];
@@ -65,7 +99,7 @@ void imp_submethod2(id self, SEL _cmd){
 
 
 /**
- 获取所有成员变量
+ 获取类的所有成员变量
  */
 - (void)runtimeGetAllIvars{
     
@@ -149,7 +183,7 @@ void imp_submethod2(id self, SEL _cmd){
  动态添加类
  */
 - (void)runtimeAddClass{
-    Class newUIViewClass = objc_allocateClassPair([UIView class], "JTView", 0);
+    Class newUIViewClass = objc_allocateClassPair([UIView class], "JTNewClass", 0);
     //
     class_addMethod(newUIViewClass, @selector(submethod1), (IMP)imp_submethod1, "v@:");
     // 替换方法的实现
@@ -162,7 +196,7 @@ void imp_submethod2(id self, SEL _cmd){
     objc_property_attribute_t attrs[] = {type, ownership, backingivar};
     
     class_addProperty(newUIViewClass, "property2", attrs, 3);
-    objc_registerClassPair(newUIViewClass); // 添加方法  属性  实例变量要在objc_allocateClassPair 和  objc_registerClassPair之间 ，注册之后才能正常使用
+    objc_registerClassPair(newUIViewClass); // 添加方法  属性  实例变量要在objc_allocateClassPair 和  objc_registerClassPair之间 ，注册之后才能正常使用, 注册的类名一定要和项目中已经存在的不一样  否则会崩溃  严谨的做法是注册之前判断系统中是否已经存在同名的类s
     
     id instance = [[newUIViewClass alloc] init];
     [instance performSelector:@selector(submethod1)];
