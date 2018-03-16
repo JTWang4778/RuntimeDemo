@@ -16,6 +16,8 @@
 		BB4FFB6F2058BF9F0024650F /* PushFirstController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4FFB6E2058BF9F0024650F /* PushFirstController.m */; };
 		BB4FFB732058C06E0024650F /* UIViewController+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4FFB722058C06E0024650F /* UIViewController+MethodSwizzling.m */; };
 		BB5E27112059621F00059C7B /* JTView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5E27102059621F00059C7B /* JTView.m */; };
+		BBF64A6F205BBF9E00D8A5CF /* JTNewClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF64A6E205BBF9E00D8A5CF /* JTNewClassTest.m */; };
+		BBF64A72205BCA0500D8A5CF /* JTNewSubClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF64A71205BCA0500D8A5CF /* JTNewSubClassTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,10 @@
 		BB4FFB722058C06E0024650F /* UIViewController+MethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MethodSwizzling.m"; sourceTree = "<group>"; };
 		BB5E270F2059621F00059C7B /* JTView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTView.h; sourceTree = "<group>"; };
 		BB5E27102059621F00059C7B /* JTView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTView.m; sourceTree = "<group>"; };
+		BBF64A6D205BBF9E00D8A5CF /* JTNewClassTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTNewClassTest.h; sourceTree = "<group>"; };
+		BBF64A6E205BBF9E00D8A5CF /* JTNewClassTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTNewClassTest.m; sourceTree = "<group>"; };
+		BBF64A70205BCA0500D8A5CF /* JTNewSubClassTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTNewSubClassTest.h; sourceTree = "<group>"; };
+		BBF64A71205BCA0500D8A5CF /* JTNewSubClassTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTNewSubClassTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,10 @@
 				BB4FFB6E2058BF9F0024650F /* PushFirstController.m */,
 				BB5E270F2059621F00059C7B /* JTView.h */,
 				BB5E27102059621F00059C7B /* JTView.m */,
+				BBF64A6D205BBF9E00D8A5CF /* JTNewClassTest.h */,
+				BBF64A6E205BBF9E00D8A5CF /* JTNewClassTest.m */,
+				BBF64A70205BCA0500D8A5CF /* JTNewSubClassTest.h */,
+				BBF64A71205BCA0500D8A5CF /* JTNewSubClassTest.m */,
 			);
 			path = RunTimeTest;
 			sourceTree = "<group>";
@@ -169,7 +179,9 @@
 				BB4FFB6F2058BF9F0024650F /* PushFirstController.m in Sources */,
 				BB5E27112059621F00059C7B /* JTView.m in Sources */,
 				BB25798E20566DFE00A22EBC /* ViewController.m in Sources */,
+				BBF64A6F205BBF9E00D8A5CF /* JTNewClassTest.m in Sources */,
 				BB25799920566DFE00A22EBC /* main.m in Sources */,
+				BBF64A72205BCA0500D8A5CF /* JTNewSubClassTest.m in Sources */,
 				BB25798B20566DFE00A22EBC /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

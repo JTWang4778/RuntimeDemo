@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <objc/runtime.h>
 #import "JTView.h"
+#import "JTNewClassTest.h"
 
 @interface ViewController ()
 
@@ -54,7 +55,78 @@ void imp_submethod2(id self, SEL _cmd){
     
 //    [self runtimeAddClass];
     
-    [self testRuntimeAssociteObject];
+//    [self testRuntimeAssociteObject];
+    
+    [self test];
+}
+
+- (void)test{
+
+    Class class = NSClassFromString(@"JTNewClassTest");
+    unsigned int count = 0;
+    
+//    // 1获取所有实例变量,  会获取当前类（不包含父类）的所有实例变量，不管是否暴露在头文件暴露，包含属性生成的对应的 _开头的实例变量
+//
+//    Ivar * ivars = class_copyIvarList(class, &count);
+//    if (count > 0) {
+//        for (int i = 0; i < count; i++) {
+//            Ivar ivar = ivars[i];
+//            NSString *ivarName = [NSString stringWithUTF8String:ivar_getName(ivar)];
+//            NSString *ivarType = [NSString stringWithUTF8String:ivar_getTypeEncoding(ivar)];
+//            NSLog(@"%@,%@",ivarName,ivarType);
+//        }
+//    }
+//    free(ivars);
+//    NSLog(@"************************************************");
+//    count = 0;
+//    // 2， 获取所有属性
+//    objc_property_t * propertys = class_copyPropertyList(class, &count);
+//    if (count > 0) {
+//        for (int i = 0; i < count; i++) {
+//            objc_property_t p = propertys[i];
+//            NSString *pName = [NSString stringWithUTF8String: property_getName(p)];
+//            NSString *pType = [NSString stringWithUTF8String:property_getAttributes(p)];
+//            NSLog(@"%@,%@",pName,pType);
+//        }
+//    }
+//    free(propertys);
+//
+//
+    // 3.1，获取当前类定义中所有的方法： 包含当前类的 所有对象方法 （包括属性的set和get方法）,  但是不包含类方法，因为类方法定义在元类中
+    // .cxx_destruct,v16@0:8  多一个方法   这个方法是什么鬼
+    NSLog(@"*************************************************************");
+    count = 0;
+    Method * methods = class_copyMethodList(class, &count);
+    if (count > 0) {
+        for (int i = 0; i < count; i++) {
+            Method method = methods[i];
+            NSString *methodName = NSStringFromSelector(method_getName(method));
+            NSString *methodType = [NSString stringWithUTF8String:method_getTypeEncoding(method)];
+            NSLog(@"%@,%@",methodName,methodType);
+        }
+    }
+    free(methods);
+    
+    
+    // 3.2，获取类的所有类方法，  （需要访问元类的方法定义）
+    Class metaClass = object_getClass(class);
+    if (class_isMetaClass(metaClass)) {
+        NSLog(@"%@\n\n\n\n", [NSString stringWithUTF8String:class_getName(metaClass)]);
+        NSLog(@"************************************************************");
+        count = 0;
+        Method *methods = class_copyMethodList(metaClass, &count);
+        if (count > 0) {
+            for (int i = 0; i < count; i++) {
+                Method method = methods[i];
+                NSString *methodName = NSStringFromSelector(method_getName(method));
+                NSString *methodType = [NSString stringWithUTF8String:method_getTypeEncoding(method)];
+                NSLog(@"%@,%@",methodName,methodType);
+            }
+        }
+        free(methods);
+    }else{
+        NSLog(@"");
+    }
 }
 
 
@@ -216,7 +288,7 @@ void imp_submethod2(id self, SEL _cmd){
     [instans performSelector:@selector(testMetaClass)];
 }
 
-- (void)test{
+- (void)testasdfasdf{
     NSLog(@"%@, %@",[self class], [super class]);
     Class superClass = [self superclass];
     NSString *className = [NSString stringWithCString:class_getName(superClass) encoding:NSUTF8StringEncoding];
