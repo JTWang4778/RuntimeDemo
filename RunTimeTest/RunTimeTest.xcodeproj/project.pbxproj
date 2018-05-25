@@ -7,20 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		994359664811E014BDC3E016 /* libPods-RunTimeTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CC5CA1F3E92D4776B7AD89 /* libPods-RunTimeTest.a */; };
+		BB097E8120B7E9DE004D6F0D /* SpareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BB097E8020B7E9DE004D6F0D /* SpareObject.m */; };
+		BB21016D2095AE2F00943BD6 /* GestureTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB21016C2095AE2F00943BD6 /* GestureTestView.m */; };
 		BB25798B20566DFE00A22EBC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB25798A20566DFE00A22EBC /* AppDelegate.m */; };
 		BB25798E20566DFE00A22EBC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB25798D20566DFE00A22EBC /* ViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB25799120566DFE00A22EBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB25798F20566DFE00A22EBC /* Main.storyboard */; };
 		BB25799320566DFE00A22EBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB25799220566DFE00A22EBC /* Assets.xcassets */; };
 		BB25799620566DFE00A22EBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB25799420566DFE00A22EBC /* LaunchScreen.storyboard */; };
 		BB25799920566DFE00A22EBC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB25799820566DFE00A22EBC /* main.m */; };
+		BB45424920A042160012519F /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB45424820A042160012519F /* SwiftViewController.swift */; };
 		BB4FFB6F2058BF9F0024650F /* PushFirstController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4FFB6E2058BF9F0024650F /* PushFirstController.m */; };
 		BB4FFB732058C06E0024650F /* UIViewController+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4FFB722058C06E0024650F /* UIViewController+MethodSwizzling.m */; };
 		BB5E27112059621F00059C7B /* JTView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5E27102059621F00059C7B /* JTView.m */; };
+		BB75445E20B7BDDB00FE81B9 /* MessageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB75445D20B7BDDB00FE81B9 /* MessageTest.m */; };
+		BB9A454520B806D400D4A14F /* HTForwardInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A454420B806D400D4A14F /* HTForwardInvocation.m */; };
 		BBF64A6F205BBF9E00D8A5CF /* JTNewClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF64A6E205BBF9E00D8A5CF /* JTNewClassTest.m */; };
 		BBF64A72205BCA0500D8A5CF /* JTNewSubClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF64A71205BCA0500D8A5CF /* JTNewSubClassTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05CC5CA1F3E92D4776B7AD89 /* libPods-RunTimeTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RunTimeTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		938259567E7CDEF0979F7266 /* Pods-RunTimeTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunTimeTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunTimeTest/Pods-RunTimeTest.release.xcconfig"; sourceTree = "<group>"; };
+		BB097E7F20B7E9DE004D6F0D /* SpareObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpareObject.h; sourceTree = "<group>"; };
+		BB097E8020B7E9DE004D6F0D /* SpareObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareObject.m; sourceTree = "<group>"; };
+		BB21016B2095AE2F00943BD6 /* GestureTestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureTestView.h; sourceTree = "<group>"; };
+		BB21016C2095AE2F00943BD6 /* GestureTestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureTestView.m; sourceTree = "<group>"; };
 		BB25798620566DFE00A22EBC /* RunTimeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunTimeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB25798920566DFE00A22EBC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BB25798A20566DFE00A22EBC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -31,16 +43,23 @@
 		BB25799520566DFE00A22EBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB25799720566DFE00A22EBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB25799820566DFE00A22EBC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BB45424720A042160012519F /* RunTimeTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunTimeTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		BB45424820A042160012519F /* SwiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
 		BB4FFB6D2058BF9F0024650F /* PushFirstController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PushFirstController.h; sourceTree = "<group>"; };
 		BB4FFB6E2058BF9F0024650F /* PushFirstController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PushFirstController.m; sourceTree = "<group>"; };
 		BB4FFB712058C06E0024650F /* UIViewController+MethodSwizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MethodSwizzling.h"; sourceTree = "<group>"; };
 		BB4FFB722058C06E0024650F /* UIViewController+MethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MethodSwizzling.m"; sourceTree = "<group>"; };
 		BB5E270F2059621F00059C7B /* JTView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTView.h; sourceTree = "<group>"; };
 		BB5E27102059621F00059C7B /* JTView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTView.m; sourceTree = "<group>"; };
+		BB75445C20B7BDDB00FE81B9 /* MessageTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageTest.h; sourceTree = "<group>"; };
+		BB75445D20B7BDDB00FE81B9 /* MessageTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageTest.m; sourceTree = "<group>"; };
+		BB9A454320B806D400D4A14F /* HTForwardInvocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTForwardInvocation.h; sourceTree = "<group>"; };
+		BB9A454420B806D400D4A14F /* HTForwardInvocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTForwardInvocation.m; sourceTree = "<group>"; };
 		BBF64A6D205BBF9E00D8A5CF /* JTNewClassTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTNewClassTest.h; sourceTree = "<group>"; };
 		BBF64A6E205BBF9E00D8A5CF /* JTNewClassTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTNewClassTest.m; sourceTree = "<group>"; };
 		BBF64A70205BCA0500D8A5CF /* JTNewSubClassTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTNewSubClassTest.h; sourceTree = "<group>"; };
 		BBF64A71205BCA0500D8A5CF /* JTNewSubClassTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTNewSubClassTest.m; sourceTree = "<group>"; };
+		CC79EBA59F29886FED6653F5 /* Pods-RunTimeTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunTimeTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunTimeTest/Pods-RunTimeTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,17 +67,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				994359664811E014BDC3E016 /* libPods-RunTimeTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		70022CBC7806D59C12B46409 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC79EBA59F29886FED6653F5 /* Pods-RunTimeTest.debug.xcconfig */,
+				938259567E7CDEF0979F7266 /* Pods-RunTimeTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BB25797D20566DFE00A22EBC = {
 			isa = PBXGroup;
 			children = (
 				BB25798820566DFE00A22EBC /* RunTimeTest */,
 				BB25798720566DFE00A22EBC /* Products */,
+				70022CBC7806D59C12B46409 /* Pods */,
+				F470C45BBA2C206856F90182 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +104,7 @@
 		BB25798820566DFE00A22EBC /* RunTimeTest */ = {
 			isa = PBXGroup;
 			children = (
+				BB75445920B7BD2900FE81B9 /* 消息机制 */,
 				BB4FFB702058C0380024650F /* MethodSwizzling */,
 				BB25798920566DFE00A22EBC /* AppDelegate.h */,
 				BB25798A20566DFE00A22EBC /* AppDelegate.m */,
@@ -91,6 +123,10 @@
 				BBF64A6E205BBF9E00D8A5CF /* JTNewClassTest.m */,
 				BBF64A70205BCA0500D8A5CF /* JTNewSubClassTest.h */,
 				BBF64A71205BCA0500D8A5CF /* JTNewSubClassTest.m */,
+				BB21016B2095AE2F00943BD6 /* GestureTestView.h */,
+				BB21016C2095AE2F00943BD6 /* GestureTestView.m */,
+				BB45424820A042160012519F /* SwiftViewController.swift */,
+				BB45424720A042160012519F /* RunTimeTest-Bridging-Header.h */,
 			);
 			path = RunTimeTest;
 			sourceTree = "<group>";
@@ -104,6 +140,27 @@
 			path = MethodSwizzling;
 			sourceTree = "<group>";
 		};
+		BB75445920B7BD2900FE81B9 /* 消息机制 */ = {
+			isa = PBXGroup;
+			children = (
+				BB75445C20B7BDDB00FE81B9 /* MessageTest.h */,
+				BB75445D20B7BDDB00FE81B9 /* MessageTest.m */,
+				BB097E7F20B7E9DE004D6F0D /* SpareObject.h */,
+				BB097E8020B7E9DE004D6F0D /* SpareObject.m */,
+				BB9A454320B806D400D4A14F /* HTForwardInvocation.h */,
+				BB9A454420B806D400D4A14F /* HTForwardInvocation.m */,
+			);
+			path = "消息机制";
+			sourceTree = "<group>";
+		};
+		F470C45BBA2C206856F90182 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05CC5CA1F3E92D4776B7AD89 /* libPods-RunTimeTest.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -111,9 +168,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB25799C20566DFE00A22EBC /* Build configuration list for PBXNativeTarget "RunTimeTest" */;
 			buildPhases = (
+				55266CA1CEA6E047EC10D456 /* [CP] Check Pods Manifest.lock */,
 				BB25798220566DFE00A22EBC /* Sources */,
 				BB25798320566DFE00A22EBC /* Frameworks */,
 				BB25798420566DFE00A22EBC /* Resources */,
+				CD1C03BF2C8BE95DA3EF367E /* [CP] Embed Pods Frameworks */,
+				6C7F9362E4D60F331104C239 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -135,6 +195,7 @@
 				TargetAttributes = {
 					BB25798520566DFE00A22EBC = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -170,6 +231,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		55266CA1CEA6E047EC10D456 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6C7F9362E4D60F331104C239 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RunTimeTest/Pods-RunTimeTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD1C03BF2C8BE95DA3EF367E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RunTimeTest/Pods-RunTimeTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BB25798220566DFE00A22EBC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -179,10 +288,15 @@
 				BB4FFB6F2058BF9F0024650F /* PushFirstController.m in Sources */,
 				BB5E27112059621F00059C7B /* JTView.m in Sources */,
 				BB25798E20566DFE00A22EBC /* ViewController.m in Sources */,
+				BB9A454520B806D400D4A14F /* HTForwardInvocation.m in Sources */,
+				BB75445E20B7BDDB00FE81B9 /* MessageTest.m in Sources */,
 				BBF64A6F205BBF9E00D8A5CF /* JTNewClassTest.m in Sources */,
+				BB097E8120B7E9DE004D6F0D /* SpareObject.m in Sources */,
 				BB25799920566DFE00A22EBC /* main.m in Sources */,
 				BBF64A72205BCA0500D8A5CF /* JTNewSubClassTest.m in Sources */,
 				BB25798B20566DFE00A22EBC /* AppDelegate.m in Sources */,
+				BB45424920A042160012519F /* SwiftViewController.swift in Sources */,
+				BB21016D2095AE2F00943BD6 /* GestureTestView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,26 +428,35 @@
 		};
 		BB25799D20566DFE00A22EBC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC79EBA59F29886FED6653F5 /* Pods-RunTimeTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RunTimeTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JT.com.RunTimeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RunTimeTest/RunTimeTest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		BB25799E20566DFE00A22EBC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 938259567E7CDEF0979F7266 /* Pods-RunTimeTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RunTimeTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JT.com.RunTimeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RunTimeTest/RunTimeTest-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

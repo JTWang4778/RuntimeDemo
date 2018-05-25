@@ -10,8 +10,22 @@
 #import <objc/runtime.h>
 #import "JTView.h"
 #import "JTNewClassTest.h"
+#import <AFNetworking.h>
+#import "GestureTestView.h"
+#import <RunTimeTest-Swift.h>
+#import "MessageTest.h"
+
+NSInteger globalVariable = 10;
+static NSInteger staticGlobalVariable = 100;
+
+typedef void (^DisBlock)(void);
 
 @interface ViewController ()
+
+@property (nonatomic,strong)UIWebView *webView;
+@property (nonatomic,strong)NSArray *arr;
+
+@property (nonatomic,copy) DisBlock dismissBlock;// 使用assign修饰block后 如果block内引用了外部局部变量，  即block的类型是栈block，  那么在作用域使用block的时候就会崩溃， 如果是全局变量的话没有问题。  所以还是要用copy修饰，经过copy修饰后 block类型变为__NSMallocBlock__   堆block
 
 @end
 
@@ -19,7 +33,6 @@
 void TestMetaClass(id self, SEL _cmd){
     NSLog(@"the object is %@",self);
     NSLog(@"the class is %@, superclass is %@",[self class], [self superclass]);
-    
     Class currentClass = [self class];
     
     for (int i = 0; i < 4; i++) {
@@ -43,6 +56,12 @@ void imp_submethod2(id self, SEL _cmd){
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
+//    UIWebView *asdf = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+//    [self.view addSubview:asdf];
+//    self.webView = asdf;
+    
 //    [self getAllRegisterClass];
     
 //    [self registerClassPair];
@@ -57,8 +76,99 @@ void imp_submethod2(id self, SEL _cmd){
     
 //    [self testRuntimeAssociteObject];
     
-    [self test];
+//    [self test];
+    
+//    [self runloopTest];
+    
+//    [self AFNetworkTest];
+//    self.dismissBlock();
+//    NSLog(@"%@",self.dismissBlock);
+    
+//    [self toLearnGestureFromAPI];
+    
+    
+    /*
+        1, 实例的类其实也是对象， 叫做类对象，区别就是类对象在内存中只有一份  类对象的类叫做元类
+        2，当调用实例方法时， 会去类对象的方法列表中查找匹配
+        3，当调用类方法时，  会去类的元类中查找
+        4，观察类存储结构的定义，  发现有isa和  super两个class类型的数据，  其中isa指向所属的类，super指向父类
+     */
+    [self tesMessage];
 }
+- (void)AFNetworkTest{
+    
+    @synchronized(self) {
+        // 需要锁定的代码
+    }
+    
+//    [NSThread currentThread];
+    dispatch_queue_t seSqueue = dispatch_queue_create("com.twshcool.asdf", DISPATCH_QUEUE_SERIAL);  // 创建一个串行队列
+    dispatch_queue_t queue = dispatch_queue_create("asdfasdf", DISPATCH_QUEUE_CONCURRENT);//  创建一个并发队列
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+    dispatch_queue_t grobalQueue = dispatch_get_global_queue(0, 0);
+    
+    dispatch_async(seSqueue, ^{
+        NSLog(@"asdf");
+    });
+    
+    dispatch_sync(queue, ^{
+        NSLog(@"asdfasdf");
+    });
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSLog(@"一次执行");
+    });
+    
+    __block NSInteger asdf = 10;
+    static NSInteger staticValue = 12;
+    // 没有引用外部变量
+    void (^firstBlock)(void)  = ^{ NSLog(@"sdaf%d",asdf); }; // __NSGlobalBlock__
+//    firstBlock();
+    
+    
+//    void (^secondBlock)(NSInteger) = ^(NSInteger paramter){
+//
+//        asdf = asdf + 1; //
+////        NSLog(@"%d",staticGlobalVariable); // 如果引用静态变量，全局变量， 静态全局变量， 类型会变成 __NSGlobalBlock__
+////        NSLog(@"%d",self.arr); // 如果引用外部局部变量， 类型会变成 __NSStackBlock__
+////        NSLog(@"%ld",(long)paramter);
+//    };
+//    secondBlock(10);
+    
+    self.dismissBlock = firstBlock;
+}
+
+- (void)toLearnGestureFromAPI{
+
+    GestureTestView *testView = [[GestureTestView alloc] initWithFrame:CGRectMake(0, 100, UIScreen.mainScreen.bounds.size.width, 100)];
+    [self.view addSubview:testView];
+    
+//    UIPinchGestureRecognizer
+//    UIPanGestureRecognizer
+//    UIRotationGestureRecognizer
+//    UISwipeGestureRecognizer
+//    UILongPressGestureRecognizer
+//    UIScreenEdgePanGestureRecognizer  //发现新的手势类型  系统的侧滑返回就是用的这个识别的
+    
+}
+/**
+ 
+ */
+- (void)runloopTest{
+//    NSRunLoop *runloop = [NSRunLoop currentRunLoop];
+//    [runloop addObserver:self forKeyPath:@"" options:NSKeyValueObservingOptionNew context:nil];
+//    NSLog(@"%@",runloop);
+    
+//    CFRunLoopObserverRef observer = CFRunLoopObserverCreateWithHandler(kCFAllocatorDefault, kCFRunLoopAllActivities, YES, 0, ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) {
+//        NSLog(@"%zd",activity);
+//    });
+//
+//    CFRunLoopAddObserver(CFRunLoopGetMain(), observer, kCFRunLoopDefaultMode);
+//    CFRelease(observer);
+    
+}
+
 
 - (void)test{
 
@@ -106,7 +216,6 @@ void imp_submethod2(id self, SEL _cmd){
         }
     }
     free(methods);
-    
     
     // 3.2，获取类的所有类方法，  （需要访问元类的方法定义）
     Class metaClass = object_getClass(class);
@@ -161,7 +270,7 @@ void imp_submethod2(id self, SEL _cmd){
  关联对象， 借此可以实现向已经存在的类添加属性的功能
  */
 - (void)testRuntimeAssociteObject{
-    JTView *asdf = [[JTView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    JTView *asdf = [[JTView alloc] initWithFrame:CGRectZero];
     asdf.backgroundColor = [UIColor grayColor];
     [asdf setTapActionWith:^{
         NSLog(@"诶呀  你点我了啊 ");
@@ -174,15 +283,15 @@ void imp_submethod2(id self, SEL _cmd){
  获取类的所有成员变量
  */
 - (void)runtimeGetAllIvars{
-    
-    Class class = NSClassFromString(@"UINavigationController");
+    Class class = NSClassFromString(@"MPMoviePlayerController");
     unsigned int count = 0;
     Ivar *ivars = class_copyIvarList(class, &count);
+    NSLog(@"count = %d", count);
     for (int i = 0; i < count; i++) {
         Ivar ivar = ivars[i];
         NSString *ivarName = [NSString stringWithUTF8String:ivar_getName(ivar)];
         NSString *ivarType = [NSString stringWithUTF8String:ivar_getTypeEncoding(ivar)];
-        NSLog(@"name = %@,type = %@",ivarName,ivarType);//
+        NSLog(@"name = %@",ivarName);//
     }
     
     /*
@@ -210,11 +319,12 @@ void imp_submethod2(id self, SEL _cmd){
     Class class = NSClassFromString(@"UINavigationController");
     unsigned int count = 0;
     objc_property_t *propertys = class_copyPropertyList(class, &count);
+    NSLog(@"count = %d",count);
     for (int i = 0; i < count; i++) {
         objc_property_t p = propertys[i];
         NSString *name = [NSString stringWithUTF8String:property_getName(p)];
         NSString *type = [NSString stringWithUTF8String:property_getAttributes(p)];
-        NSLog(@"name = %@,type = %@",name,type);
+        NSLog(@"%@",name);
     }
     free(propertys);
 }
@@ -288,27 +398,38 @@ void imp_submethod2(id self, SEL _cmd){
     [instans performSelector:@selector(testMetaClass)];
 }
 
-- (void)testasdfasdf{
-    NSLog(@"%@, %@",[self class], [super class]);
-    Class superClass = [self superclass];
-    NSString *className = [NSString stringWithCString:class_getName(superClass) encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",className);
-    NSString *superClassName = [NSString stringWithCString:class_getName([superClass class]) encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",superClassName);
+- (void)tesMessage{
     
-    if (class_isMetaClass(superClass)) {
-        NSLog(@"是元类");
-    }else{
-        NSLog(@"不是元类");
-    }
+    // 当实例对象调用时
+    MessageTest *test = [[MessageTest alloc] init];
+//    Class instanceClass = [test class];
+//    Class classClass = [MessageTest class];
+//    Class objcClass = object_getClass(test);
+//    NSLog(@"%p,%p,%p",instanceClass,classClass,objcClass);
     
-    int count = 0;
-    Ivar * asdf = class_copyIvarList(superClass, &count);
-    NSLog(@"%d",count);
+    // 类对象调用，
+//    id classObject = [test class];
+//    Class instanceClass = [classObject class];
+//    Class classClass = [MessageTest class];
+//    Class objcClass = object_getClass(classObject);
+//    NSLog(@"%p,%p,%p",instanceClass,classClass,objcClass);
+    
+    /*
+        1,不管什么情况，object_getClass 会返回对象isa指针所指向的类
+        2，对于class方法，  如果是实例对象调用，返回对象所属的类效果和object_getClass一样。如果是类调用（不管是类和类对象）都返回当前类
+     */
+    
+//    [MessageTest testClassMethod];
+    MessageTest *asdf = [[MessageTest alloc] init];
+    [asdf testInstanceMethod];
+//    [asdf performSelector:@selector(asdfadfasdf:) withObject:nil];
     
     
-    Class asdasdff = objc_getMetaClass(class_getName([superClass superclass]));
-    NSLog(@"%@",asdasdff);
 }
 
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    SwiftViewController *swift = [SwiftViewController new];
+    [self.navigationController pushViewController:swift animated:true];
+}
 @end

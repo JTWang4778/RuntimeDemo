@@ -26,7 +26,6 @@ static char * KAssociateTapGestureRecognizer = "KAssociateTapGestureRecognizer";
 
      */
     
-    
     UITapGestureRecognizer *tap = objc_getAssociatedObject(self, &KAssociateTapGestureRecognizer);
     if (!tap) {
         tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(jt_handleActionForTapGesture:)];
@@ -44,6 +43,21 @@ static char * KAssociateTapGestureRecognizer = "KAssociateTapGestureRecognizer";
         void (^block)(void) = objc_getAssociatedObject(self, &KAssociateBlock);
         block();
     }
+}
+
+- (void)layoutSubviews{
+    NSLog(@"layoutSubviews");
+    [super layoutSubviews];
+}
+
+- (void)layoutIfNeeded{
+    NSLog(@"layoutIfNeeded");
+    [super layoutIfNeeded];
+}
+
+- (void)setNeedsLayout{
+    NSLog(@"setNeedsLayout");
+    [super setNeedsLayout];
 }
 
 @end
