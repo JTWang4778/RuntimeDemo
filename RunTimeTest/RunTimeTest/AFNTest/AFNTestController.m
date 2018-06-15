@@ -20,16 +20,18 @@
     // Do any additional setup after loading the view.
     self.title = @"AFN";
     
-//    NSURLSessionConfiguration *config = [[NSURLSessionConfiguration alloc] init];
+    NSURLSessionConfiguration *config = [[NSURLSessionConfiguration alloc] init];
     
-//    AFHTTPSessionManager *manage = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    //text/html
+    AFHTTPSessionManager *manage = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+//    text/html
     
     AFNetworkReachabilityManager *asdf = [AFNetworkReachabilityManager manager];
     [asdf setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         NSLog(@"%d",status);
     }];
     [asdf startMonitoring];
+    
+    NSLog(@"新增代码");
 //    switch (asdf.networkReachabilityStatus) {
 //        case AFNetworkReachabilityStatusUnknown:
 //            NSLog(@"AFNetworkReachabilityStatusUnknown");
@@ -47,7 +49,6 @@
 //        default:
 //            break;
 //    }
-//    NSLog(@"%d",asdf.networkReachabilityStatus);
     
     
     AFHTTPSessionManager *managasde = [AFHTTPSessionManager manager];
