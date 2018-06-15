@@ -20,6 +20,7 @@
 		BB4FFB6F2058BF9F0024650F /* PushFirstController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4FFB6E2058BF9F0024650F /* PushFirstController.m */; };
 		BB4FFB732058C06E0024650F /* UIViewController+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4FFB722058C06E0024650F /* UIViewController+MethodSwizzling.m */; };
 		BB5E27112059621F00059C7B /* JTView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5E27102059621F00059C7B /* JTView.m */; };
+		BB6BFD8620D0C57C00669836 /* AFNTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6BFD8520D0C57C00669836 /* AFNTestController.m */; };
 		BB75445E20B7BDDB00FE81B9 /* MessageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB75445D20B7BDDB00FE81B9 /* MessageTest.m */; };
 		BB9A454520B806D400D4A14F /* HTForwardInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A454420B806D400D4A14F /* HTForwardInvocation.m */; };
 		BBF64A6F205BBF9E00D8A5CF /* JTNewClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF64A6E205BBF9E00D8A5CF /* JTNewClassTest.m */; };
@@ -51,6 +52,8 @@
 		BB4FFB722058C06E0024650F /* UIViewController+MethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MethodSwizzling.m"; sourceTree = "<group>"; };
 		BB5E270F2059621F00059C7B /* JTView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTView.h; sourceTree = "<group>"; };
 		BB5E27102059621F00059C7B /* JTView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTView.m; sourceTree = "<group>"; };
+		BB6BFD8420D0C57C00669836 /* AFNTestController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFNTestController.h; sourceTree = "<group>"; };
+		BB6BFD8520D0C57C00669836 /* AFNTestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFNTestController.m; sourceTree = "<group>"; };
 		BB75445C20B7BDDB00FE81B9 /* MessageTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageTest.h; sourceTree = "<group>"; };
 		BB75445D20B7BDDB00FE81B9 /* MessageTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageTest.m; sourceTree = "<group>"; };
 		BB9A454320B806D400D4A14F /* HTForwardInvocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTForwardInvocation.h; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 		BB25798820566DFE00A22EBC /* RunTimeTest */ = {
 			isa = PBXGroup;
 			children = (
+				BB6BFD8320D0C55E00669836 /* AFNTest */,
 				BB75445920B7BD2900FE81B9 /* 消息机制 */,
 				BB4FFB702058C0380024650F /* MethodSwizzling */,
 				BB25798920566DFE00A22EBC /* AppDelegate.h */,
@@ -140,6 +144,15 @@
 			path = MethodSwizzling;
 			sourceTree = "<group>";
 		};
+		BB6BFD8320D0C55E00669836 /* AFNTest */ = {
+			isa = PBXGroup;
+			children = (
+				BB6BFD8420D0C57C00669836 /* AFNTestController.h */,
+				BB6BFD8520D0C57C00669836 /* AFNTestController.m */,
+			);
+			path = AFNTest;
+			sourceTree = "<group>";
+		};
 		BB75445920B7BD2900FE81B9 /* 消息机制 */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,8 +185,6 @@
 				BB25798220566DFE00A22EBC /* Sources */,
 				BB25798320566DFE00A22EBC /* Frameworks */,
 				BB25798420566DFE00A22EBC /* Resources */,
-				CD1C03BF2C8BE95DA3EF367E /* [CP] Embed Pods Frameworks */,
-				6C7F9362E4D60F331104C239 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -238,43 +249,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RunTimeTest-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		6C7F9362E4D60F331104C239 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RunTimeTest/Pods-RunTimeTest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CD1C03BF2C8BE95DA3EF367E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RunTimeTest/Pods-RunTimeTest-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -291,6 +275,7 @@
 				BB9A454520B806D400D4A14F /* HTForwardInvocation.m in Sources */,
 				BB75445E20B7BDDB00FE81B9 /* MessageTest.m in Sources */,
 				BBF64A6F205BBF9E00D8A5CF /* JTNewClassTest.m in Sources */,
+				BB6BFD8620D0C57C00669836 /* AFNTestController.m in Sources */,
 				BB097E8120B7E9DE004D6F0D /* SpareObject.m in Sources */,
 				BB25799920566DFE00A22EBC /* main.m in Sources */,
 				BBF64A72205BCA0500D8A5CF /* JTNewSubClassTest.m in Sources */,

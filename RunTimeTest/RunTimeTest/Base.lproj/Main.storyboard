@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kdm-4R-Clv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kdm-4R-Clv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,10 +25,19 @@
                                     <segue destination="GdC-AH-taN" kind="push" id="5OO-QL-zJl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaF-Ot-Svp">
+                                <rect key="frame" x="158" y="371" width="59" height="30"/>
+                                <state key="normal" title="AFNTest"/>
+                                <connections>
+                                    <segue destination="Srp-WW-AVg" kind="push" id="Lcu-ji-bR1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="YaF-Ot-Svp" firstAttribute="centerX" secondItem="2CY-GG-npe" secondAttribute="centerX" id="7d3-FM-ajP"/>
                             <constraint firstItem="2CY-GG-npe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZkK-Po-2uh"/>
+                            <constraint firstItem="YaF-Ot-Svp" firstAttribute="top" secondItem="2CY-GG-npe" secondAttribute="bottom" constant="22.5" id="gQx-B2-E2R"/>
                             <constraint firstItem="2CY-GG-npe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xLu-dD-U9g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -37,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="248" y="11"/>
+            <point key="canvasLocation" x="492" y="24"/>
         </scene>
         <!--Push First Controller-->
         <scene sceneID="rcM-M3-pee">
@@ -53,7 +62,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QdW-IV-M0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="24"/>
+            <point key="canvasLocation" x="1284" y="-575"/>
+        </scene>
+        <!--Test Controller-->
+        <scene sceneID="2A2-3U-KkD">
+            <objects>
+                <viewController id="Srp-WW-AVg" customClass="AFNTestController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C1T-iK-6UB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ksz-Nt-EUf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nQw-dp-M33"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JlB-zb-dQ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1212" y="345"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U81-Sl-cpI">
