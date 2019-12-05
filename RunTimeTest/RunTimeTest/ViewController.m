@@ -25,6 +25,9 @@ typedef void (^DisBlock)(void);
 @property (nonatomic,strong)UIWebView *webView;
 @property (nonatomic,strong)NSArray *arr;
 
+// 返回一个view所属的控制器
+- (UIViewController *)returnTopController: (UIView *)view;
+
 @property (nonatomic,copy) DisBlock dismissBlock;// 使用assign修饰block后 如果block内引用了外部局部变量，  即block的类型是栈block，  那么在作用域使用block的时候就会崩溃， 如果是全局变量的话没有问题。  所以还是要用copy修饰，经过copy修饰后 block类型变为__NSMallocBlock__   堆block
 
 @end
@@ -52,13 +55,35 @@ void imp_submethod2(id self, SEL _cmd){
 }
 
 @implementation ViewController
+// 返回一个view所属的控制器
+- (UIViewController *)returnTopController: (UIView *)view {
+    UIView *childView = view;
+    UIView *superView = view.superview;
+    while (superView != nil) {
+        childView = superView;
+        superView = superView.superview;
+    }
+    return (UIViewController *)childView.nextResponder;
+}
+
+- (void)tap: (UITapGestureRecognizer *)ges{
+    NSLog(@"%@",ges);
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 测试可变对象的copy修饰
+//    NSMutableString *mstr = [[NSMutableString alloc] initWithString:@"哈哈阿斯蒂芬阿斯蒂芬阿斯蒂芬"];
+//    self.testStr = mstr;
+//    [mstr appendString:@"闪光的回忆"];
+//    NSLog(@"%@,%@",mstr,self.testStr);
     
-    
-//    UIWebView *asdf = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    /*
+        提供一个方法  返回最上层view
+     */
+//    UIWebView *asdf = [[UIWebView alloc] initWithFrame:CGRectMake(0, 100, 100, 100)];
+//    asdf.backgroundColor = [UIColor redColor];
 //    [self.view addSubview:asdf];
 //    self.webView = asdf;
     
@@ -93,7 +118,7 @@ void imp_submethod2(id self, SEL _cmd){
         3，当调用类方法时，  会去类的元类中查找
         4，观察类存储结构的定义，  发现有isa和  super两个class类型的数据，  其中isa指向所属的类，super指向父类
      */
-    [self tesMessage];
+//    [self tesMessage];
 }
 - (void)AFNetworkTest{
     
@@ -135,8 +160,10 @@ void imp_submethod2(id self, SEL _cmd){
 ////        NSLog(@"%ld",(long)paramter);
 //    };
 //    secondBlock(10);
-    
+    NSLog(@"%@",firstBlock);
     self.dismissBlock = firstBlock;
+    NSLog(@"%@",firstBlock);
+    NSLog(@"%@",self.dismissBlock);
 }
 
 - (void)toLearnGestureFromAPI{
@@ -283,7 +310,7 @@ void imp_submethod2(id self, SEL _cmd){
  获取类的所有成员变量
  */
 - (void)runtimeGetAllIvars{
-    Class class = NSClassFromString(@"MPMoviePlayerController");
+    Class class = NSClassFromString(@"PushFirstController");
     unsigned int count = 0;
     Ivar *ivars = class_copyIvarList(class, &count);
     NSLog(@"count = %d", count);
@@ -293,6 +320,9 @@ void imp_submethod2(id self, SEL _cmd){
         NSString *ivarType = [NSString stringWithUTF8String:ivar_getTypeEncoding(ivar)];
         NSLog(@"name = %@",ivarName);//
     }
+    
+    printf("%s",@encode(DisBlock));
+    
     
     /*
         类型编码 ：  编译器提供的一种方法，用于编码方法的返回值和参数编码为一个字符串，将于方法的selector联系在一起。  关键字@encode可以查看某种类型的编码  常见的编码有
@@ -316,7 +346,7 @@ void imp_submethod2(id self, SEL _cmd){
 }
 
 - (void)runtimeGetAllProperty{
-    Class class = NSClassFromString(@"UINavigationController");
+    Class class = NSClassFromString(@"PushFirstController");
     unsigned int count = 0;
     objc_property_t *propertys = class_copyPropertyList(class, &count);
     NSLog(@"count = %d",count);
@@ -366,17 +396,28 @@ void imp_submethod2(id self, SEL _cmd){
  */
 - (void)runtimeAddClass{
     Class newUIViewClass = objc_allocateClassPair([UIView class], "JTNewClass", 0);
-    //
+    // 添加方法
+    // 返回值BOOL类型表示是否添加成功， 参数为class sel imp和编码type， 可以重写同名的父类，但是不能添加当前类同名的类， 如果想改变当前类方法的实现可以使用method_setImplementation方法
     class_addMethod(newUIViewClass, @selector(submethod1), (IMP)imp_submethod1, "v@:");
-    // 替换方法的实现
+    // 替换 方法的实现
+    // 有两种情况  如果原方法存在 替换原方法的实现，这时类型编码参数忽略， 如果原方法不存在  其内部会调用class_addMethod添加该方法
     class_replaceMethod(newUIViewClass, @selector(sizeToFit), (IMP)imp_submethod2, "v@:");
-    class_addIvar(newUIViewClass, "_ivar1", sizeof(NSString *), log(sizeof(NSString *)), "i");
     
+    Method method1 = class_getInstanceMethod(newUIViewClass, @selector(funcname));
+    // 给指定SEL设置x实现IMP  并返回之前的imp
+    method_setImplementation(method1, (IMP)imp_submethod2);
+    
+    
+    Method method2 = class_getInstanceMethod(newUIViewClass, @selector(funcname2));
+    // 交换两个方法的实现  
+    method_exchangeImplementations(method1, method2);
+    class_addIvar(newUIViewClass, "_ivar1", sizeof(NSString *), log(sizeof(NSString *)), "i");
+
     objc_property_attribute_t type = {"T", "@\"NSString\""};
     objc_property_attribute_t ownership = { "C", "" };
     objc_property_attribute_t backingivar = { "V", "_ivar1"};
     objc_property_attribute_t attrs[] = {type, ownership, backingivar};
-    
+
     class_addProperty(newUIViewClass, "property2", attrs, 3);
     objc_registerClassPair(newUIViewClass); // 添加方法  属性  实例变量要在objc_allocateClassPair 和  objc_registerClassPair之间 ，注册之后才能正常使用, 注册的类名一定要和项目中已经存在的不一样  否则会崩溃  严谨的做法是注册之前判断系统中是否已经存在同名的类s
     
@@ -389,11 +430,11 @@ void imp_submethod2(id self, SEL _cmd){
  */
 - (void)registerClassPair{
     // 动态添加一个NSError的子类，并且给子类添加方法，
-    Class newClass = objc_allocateClassPair([NSError class], "TestError", 0);
+    Class newClass = objc_allocateClassPair([UIButton class], "TestError", 0);
     class_addMethod(newClass, @selector(testMetaClass), (IMP)TestMetaClass, "V@:");
     objc_registerClassPair(newClass);
     
-    id instans = [[newClass alloc] initWithDomain:@"momain" code:0 userInfo:nil];
+    id instans = [[newClass alloc] init];
     NSLog(@"新创建的对象 %@",instans);
     [instans performSelector:@selector(testMetaClass)];
 }
@@ -429,7 +470,7 @@ void imp_submethod2(id self, SEL _cmd){
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    SwiftViewController *swift = [SwiftViewController new];
-    [self.navigationController pushViewController:swift animated:true];
+//    SwiftViewController *swift = [SwiftViewController new];
+//    [self.navigationController pushViewController:swift animated:true];
 }
 @end

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kdm-4R-Clv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdm-4R-Clv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,6 +13,10 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rIY-IV-Ime"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y5o-wr-p2A"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,15 +35,23 @@
                                     <segue destination="Srp-WW-AVg" kind="push" id="Lcu-ji-bR1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Nw-6a-bNB">
+                                <rect key="frame" x="172" y="270" width="31" height="30"/>
+                                <state key="normal" title="算法"/>
+                                <connections>
+                                    <segue destination="oBm-kL-y3d" kind="push" id="d1Q-bk-uss"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YaF-Ot-Svp" firstAttribute="centerX" secondItem="2CY-GG-npe" secondAttribute="centerX" id="7d3-FM-ajP"/>
+                            <constraint firstItem="2CY-GG-npe" firstAttribute="top" secondItem="0Nw-6a-bNB" secondAttribute="bottom" constant="18.5" id="Uh4-se-s7U"/>
                             <constraint firstItem="2CY-GG-npe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZkK-Po-2uh"/>
                             <constraint firstItem="YaF-Ot-Svp" firstAttribute="top" secondItem="2CY-GG-npe" secondAttribute="bottom" constant="22.5" id="gQx-B2-E2R"/>
+                            <constraint firstItem="0Nw-6a-bNB" firstAttribute="centerX" secondItem="2CY-GG-npe" secondAttribute="centerX" id="ohf-ug-n1b"/>
                             <constraint firstItem="2CY-GG-npe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xLu-dD-U9g"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="S9R-sh-Ech"/>
                 </viewController>
@@ -52,33 +63,58 @@
         <scene sceneID="rcM-M3-pee">
             <objects>
                 <viewController id="GdC-AH-taN" customClass="PushFirstController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3sQ-HL-7u3"/>
+                        <viewControllerLayoutGuide type="bottom" id="reA-jr-q8y"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uUd-Wo-VpP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="K89-cC-qp0"/>
                     </view>
                     <navigationItem key="navigationItem" id="6di-H1-DWi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QdW-IV-M0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1284" y="-575"/>
+            <point key="canvasLocation" x="1257" y="-358"/>
         </scene>
         <!--Test Controller-->
         <scene sceneID="2A2-3U-KkD">
             <objects>
                 <viewController id="Srp-WW-AVg" customClass="AFNTestController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EzR-3S-0Bc"/>
+                        <viewControllerLayoutGuide type="bottom" id="S6o-WX-2h5"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="C1T-iK-6UB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Ksz-Nt-EUf"/>
                     </view>
                     <navigationItem key="navigationItem" id="nQw-dp-M33"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JlB-zb-dQ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1212" y="345"/>
+        </scene>
+        <!--Suan Fa View Controller-->
+        <scene sceneID="aWF-Y4-WVO">
+            <objects>
+                <viewController id="oBm-kL-y3d" customClass="SuanFaViewController" customModule="RunTimeTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qd6-vS-YiK"/>
+                        <viewControllerLayoutGuide type="bottom" id="cgW-DQ-Bg0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="crp-iz-MsD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gJb-3h-daH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JhZ-pF-sF0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1940" y="89"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U81-Sl-cpI">

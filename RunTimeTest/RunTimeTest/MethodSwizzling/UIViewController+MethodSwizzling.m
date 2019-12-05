@@ -44,7 +44,7 @@
  */
 - (void)jt_viewWillAppear:(BOOL)animated{
     [self jt_viewWillAppear:animated];
-    NSLog(@"%@控制器显示了",[self class]);
+//    NSLog(@"%@控制器显示了",[self class]);
 }
 
 @end

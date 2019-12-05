@@ -10,6 +10,10 @@
 
 @interface ViewController : UIViewController
 
+@end
 
+@interface ViewController ()
+
+@property (nonatomic,copy)NSString *testStr;
 @end
 

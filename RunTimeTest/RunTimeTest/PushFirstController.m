@@ -9,10 +9,20 @@
 #import "PushFirstController.h"
 
 @interface PushFirstController ()
-
+{
+    int intest;
+}
 @end
 
 @implementation PushFirstController
+
+- (void)methodTest{
+    NSLog(@"asdf");
+}
+
++ (int)classMethod{
+    return 0;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -10,4 +10,6 @@
 
 @interface PushFirstController : UIViewController
 
+@property (nonatomic,assign)CGFloat asdf;
+
 @end

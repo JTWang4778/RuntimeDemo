@@ -48,9 +48,11 @@ class SwiftViewController: UIViewController {
             
             let pty : objc_property_t? = list?[i]
             
-            let cName = property_getName(pty)
+//            var sd : UnsafePointer = UnsafePointer.init(bitPattern: Int)
             
-            let name = String(utf8String: cName!)
+            let cName = property_getName(pty!)
+            
+            let name = String(utf8String: cName)
             
             print(name)
             
@@ -93,7 +95,7 @@ class SwiftViewController: UIViewController {
             if let method = methods?[i] {
                 
                 let methodName = method_getName(method)
-                print(methodName?.description)
+                print(methodName.description)
                 
 //                let name = String(utf8String: ivarName!)
                 
