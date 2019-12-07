@@ -12,4 +12,6 @@
 
 - (void)setTapActionWith:(void(^)(void))block;
 
++ (NSInteger)classTest;
+
 @end

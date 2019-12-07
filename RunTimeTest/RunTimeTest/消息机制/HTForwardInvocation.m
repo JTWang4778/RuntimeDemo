@@ -14,7 +14,7 @@
     NSLog(@"setMsg");
 }
 - (void)testInstanceMethod{
-    NSLog(@"setMsg");
+    NSLog(@"testInstanceMethod");
 }
 
 @end

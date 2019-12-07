@@ -7,8 +7,6 @@
 //
 
 #import "UIViewController+MethodSwizzling.h"
-#import <objc/runtime.h>
-
 @implementation UIViewController (MethodSwizzling)
 
 
@@ -16,7 +14,6 @@
  类加载进内存的时候 调用一次load方法
  */
 + (void)load{
-    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Class class = [self class];

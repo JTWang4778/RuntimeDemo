@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface MessageTest : UIView
-
 - (void)testInstanceMethod;
+
+- (int)testFunc: (NSString *)p;
+
+- (id)testFunc3: (NSInteger)a P2: (NSString *)string;
 + (void)testClassMethod;
++ (void)testClassMethod2;
 
 @end

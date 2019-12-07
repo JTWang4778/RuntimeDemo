@@ -10,6 +10,8 @@
 		994359664811E014BDC3E016 /* libPods-RunTimeTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CC5CA1F3E92D4776B7AD89 /* libPods-RunTimeTest.a */; };
 		BB097E8120B7E9DE004D6F0D /* SpareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BB097E8020B7E9DE004D6F0D /* SpareObject.m */; };
 		BB21016D2095AE2F00943BD6 /* GestureTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB21016C2095AE2F00943BD6 /* GestureTestView.m */; };
+		BB22E96D23993369000C7BA0 /* UnrecognizedMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB22E96C23993369000C7BA0 /* UnrecognizedMessageManager.m */; };
+		BB22E9D6239935D1000C7BA0 /* NSObject+MessageFarword.m in Sources */ = {isa = PBXBuildFile; fileRef = BB22E9D5239935D1000C7BA0 /* NSObject+MessageFarword.m */; };
 		BB25798B20566DFE00A22EBC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB25798A20566DFE00A22EBC /* AppDelegate.m */; };
 		BB25798E20566DFE00A22EBC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB25798D20566DFE00A22EBC /* ViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB25799120566DFE00A22EBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB25798F20566DFE00A22EBC /* Main.storyboard */; };
@@ -22,6 +24,7 @@
 		BB5E27112059621F00059C7B /* JTView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5E27102059621F00059C7B /* JTView.m */; };
 		BB6BFD8620D0C57C00669836 /* AFNTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6BFD8520D0C57C00669836 /* AFNTestController.m */; };
 		BB75445E20B7BDDB00FE81B9 /* MessageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB75445D20B7BDDB00FE81B9 /* MessageTest.m */; };
+		BB8CFA9E239A4B5600FFC599 /* NSObject+ExchangeMethodIMP.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8CFA9D239A4B5600FFC599 /* NSObject+ExchangeMethodIMP.m */; };
 		BB9A454520B806D400D4A14F /* HTForwardInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A454420B806D400D4A14F /* HTForwardInvocation.m */; };
 		BBC278CE20D6932D009B9AEE /* SuanFaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC278CD20D6932D009B9AEE /* SuanFaViewController.swift */; };
 		BBF64A6F205BBF9E00D8A5CF /* JTNewClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF64A6E205BBF9E00D8A5CF /* JTNewClassTest.m */; };
@@ -35,6 +38,10 @@
 		BB097E8020B7E9DE004D6F0D /* SpareObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareObject.m; sourceTree = "<group>"; };
 		BB21016B2095AE2F00943BD6 /* GestureTestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureTestView.h; sourceTree = "<group>"; };
 		BB21016C2095AE2F00943BD6 /* GestureTestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureTestView.m; sourceTree = "<group>"; };
+		BB22E96B23993369000C7BA0 /* UnrecognizedMessageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnrecognizedMessageManager.h; sourceTree = "<group>"; };
+		BB22E96C23993369000C7BA0 /* UnrecognizedMessageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnrecognizedMessageManager.m; sourceTree = "<group>"; };
+		BB22E9D4239935D1000C7BA0 /* NSObject+MessageFarword.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MessageFarword.h"; sourceTree = "<group>"; };
+		BB22E9D5239935D1000C7BA0 /* NSObject+MessageFarword.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MessageFarword.m"; sourceTree = "<group>"; };
 		BB25798620566DFE00A22EBC /* RunTimeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunTimeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB25798920566DFE00A22EBC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BB25798A20566DFE00A22EBC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -57,6 +64,9 @@
 		BB6BFD8520D0C57C00669836 /* AFNTestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFNTestController.m; sourceTree = "<group>"; };
 		BB75445C20B7BDDB00FE81B9 /* MessageTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageTest.h; sourceTree = "<group>"; };
 		BB75445D20B7BDDB00FE81B9 /* MessageTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageTest.m; sourceTree = "<group>"; };
+		BB8CFA9C239A4B5600FFC599 /* NSObject+ExchangeMethodIMP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ExchangeMethodIMP.h"; sourceTree = "<group>"; };
+		BB8CFA9D239A4B5600FFC599 /* NSObject+ExchangeMethodIMP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ExchangeMethodIMP.m"; sourceTree = "<group>"; };
+		BB8CFA9F239A4BA800FFC599 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		BB9A454320B806D400D4A14F /* HTForwardInvocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTForwardInvocation.h; sourceTree = "<group>"; };
 		BB9A454420B806D400D4A14F /* HTForwardInvocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTForwardInvocation.m; sourceTree = "<group>"; };
 		BBC278CD20D6932D009B9AEE /* SuanFaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuanFaViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +144,7 @@
 				BB21016C2095AE2F00943BD6 /* GestureTestView.m */,
 				BB45424820A042160012519F /* SwiftViewController.swift */,
 				BB45424720A042160012519F /* RunTimeTest-Bridging-Header.h */,
+				BB8CFA9F239A4BA800FFC599 /* PrefixHeader.pch */,
 			);
 			path = RunTimeTest;
 			sourceTree = "<group>";
@@ -165,6 +176,12 @@
 				BB097E8020B7E9DE004D6F0D /* SpareObject.m */,
 				BB9A454320B806D400D4A14F /* HTForwardInvocation.h */,
 				BB9A454420B806D400D4A14F /* HTForwardInvocation.m */,
+				BB22E96B23993369000C7BA0 /* UnrecognizedMessageManager.h */,
+				BB22E96C23993369000C7BA0 /* UnrecognizedMessageManager.m */,
+				BB22E9D4239935D1000C7BA0 /* NSObject+MessageFarword.h */,
+				BB22E9D5239935D1000C7BA0 /* NSObject+MessageFarword.m */,
+				BB8CFA9C239A4B5600FFC599 /* NSObject+ExchangeMethodIMP.h */,
+				BB8CFA9D239A4B5600FFC599 /* NSObject+ExchangeMethodIMP.m */,
 			);
 			path = "消息机制";
 			sourceTree = "<group>";
@@ -283,6 +300,8 @@
 				BBC278CE20D6932D009B9AEE /* SuanFaViewController.swift in Sources */,
 				BB4FFB6F2058BF9F0024650F /* PushFirstController.m in Sources */,
 				BB5E27112059621F00059C7B /* JTView.m in Sources */,
+				BB8CFA9E239A4B5600FFC599 /* NSObject+ExchangeMethodIMP.m in Sources */,
+				BB22E96D23993369000C7BA0 /* UnrecognizedMessageManager.m in Sources */,
 				BB25798E20566DFE00A22EBC /* ViewController.m in Sources */,
 				BB9A454520B806D400D4A14F /* HTForwardInvocation.m in Sources */,
 				BB75445E20B7BDDB00FE81B9 /* MessageTest.m in Sources */,
@@ -293,6 +312,7 @@
 				BBF64A72205BCA0500D8A5CF /* JTNewSubClassTest.m in Sources */,
 				BB25798B20566DFE00A22EBC /* AppDelegate.m in Sources */,
 				BB45424920A042160012519F /* SwiftViewController.swift in Sources */,
+				BB22E9D6239935D1000C7BA0 /* NSObject+MessageFarword.m in Sources */,
 				BB21016D2095AE2F00943BD6 /* GestureTestView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +451,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KG5ZNG86KM;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/RunTimeTest/PrefixHeader.pch";
 				INFOPLIST_FILE = RunTimeTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -451,6 +474,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KG5ZNG86KM;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = RunTimeTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

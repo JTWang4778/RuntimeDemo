@@ -15,5 +15,11 @@
 @interface ViewController ()
 
 @property (nonatomic,copy)NSString *testStr;
+
+
++ (void)classFuncTest;
+- (void)hahahal;
+
++ (NSString *)testClassMethodExchange: (NSString *)string;
 @end
 

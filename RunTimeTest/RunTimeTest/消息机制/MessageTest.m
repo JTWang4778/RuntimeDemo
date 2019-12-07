@@ -9,30 +9,47 @@
 #import "MessageTest.h"
 #import "SpareObject.h"
 #import "HTForwardInvocation.h"
-#import <objc/runtime.h>
+#import "UnrecognizedMessageManager.h"
 
-// 要添加的方法
-void func(id self, SEL sel){
-    NSLog(@"MessageTest");
-}
+// 要添加的处理未实现实例方法的方法
+//void func(id self, SEL sel){
+//
+//    NSString *className = NSStringFromClass([self class]);
+//    NSString *funcName = NSStringFromSelector(sel);
+//    NSLog(@"\n  +[%@ %@]:unrecognized selector sent to instance",className,funcName);
+//}
 
 @implementation MessageTest
 
 //+ (BOOL)resolveClassMethod:(SEL)sel{
-//    if ([NSStringFromSelector(sel)  isEqualToString:@"testClassMethod"]) {
-//        // 判断如果是需要添加的方法 动态添加
-//        class_addMethod(object_getClass(self), sel, (IMP)func, "V@:");
-//    }
-//    return NO;
+//    class_addMethod(object_getClass(self), sel, (IMP)func, "V@:");
+//    return YES;
 //}
 //
 //+ (BOOL)resolveInstanceMethod:(SEL)sel{
+    
+    
+    
 //    class_addMethod([self class], sel, (IMP)func, "V@:");
-//    if ([NSStringFromSelector(sel)  isEqualToString:@"testInstanceMethod"]) {
+//    if (sel == @selector(testInstanceMethod)) {
+////        NSLog(@"%@",NSStringFromSelector(sel));
+//        Class class = [self class];
+//        Method method = class_getInstanceMethod(class, sel);
+//        NSString *methodName = NSStringFromSelector(method_getName(method));
+//        NSString *type = [NSString stringWithUTF8String:method_getTypeEncoding(method)];
+//        NSLog(@"name = %@, type = %@",methodName, type);
+//    }else{
+//        NSLog(@"asdf");
+//    }
+//    class_addMethod([self class], sel, (IMP)instanceFunc, "V@:");
+//    return NO;
+//    if ([NSStringFromSelector(sel)  isEqualToString:@"testFunc:"]) {
 //        // 判断如果是需要添加的方法 动态添加
 //        class_addMethod([self class], sel, (IMP)func, "V@:");
+//        return YES;
+//    }else{
+//        return [super resolveInstanceMethod:sel];
 //    }
-//    return YES;
 //}
 
 
@@ -42,7 +59,7 @@ void func(id self, SEL sel){
  */
 //- (id)forwardingTargetForSelector:(SEL)aSelector{
 //
-//    return [SpareObject new];
+//    return [UnrecognizedMessageManager shareManager];
 ////    return [super forwardingTargetForSelector: aSelector];
 //}
 
@@ -55,25 +72,36 @@ void func(id self, SEL sel){
 //}
 
 //第三步，生成方法签名，然后系统用这个方法签名生成NSInvocation对象
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
-    NSString *selectedStr = NSStringFromSelector(aSelector);
-    if ([selectedStr isEqualToString:@"testInstanceMethod"]) {
-        NSMethodSignature *sign = [NSMethodSignature signatureWithObjCTypes:"v@:@"];
-        return sign;
-    }
-    return [super methodSignatureForSelector:aSelector];
-}
+//- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+//    NSString *selectedStr = NSStringFromSelector(aSelector);
+//    if ([selectedStr isEqualToString:@"testInstanceMethod"]) {
+//        NSMethodSignature *sign = [NSMethodSignature signatureWithObjCTypes:"v@:@"];
+//        return sign;
+//    }
+//    return [super methodSignatureForSelector:aSelector];
+//}
 
 //第四步，改变选择子
-- (void)forwardInvocation:(NSInvocation *)anInvocation {
-    HTForwardInvocation *forwardInvocation = [[HTForwardInvocation alloc] init];
-//    NSLog(@"%@",NSStringFromSelector(anInvocation.selector));
-//    anInvocation.selector =  NSSelectorFromString(@"setMsg:");
-    if ([forwardInvocation respondsToSelector:[anInvocation selector]]) {
-        [anInvocation invokeWithTarget:forwardInvocation];
-    } else {
-        [super forwardInvocation:anInvocation];
-    }
-}
+//- (void)forwardInvocation:(NSInvocation *)anInvocation {
+//    HTForwardInvocation *forwardInvocation = [[HTForwardInvocation alloc] init];
+////    NSLog(@"%@",NSStringFromSelector(anInvocation.selector));
+////    anInvocation.selector =  NSSelectorFromString(@"setMsg:");
+//    if ([forwardInvocation respondsToSelector:[anInvocation selector]]) {
+//        [anInvocation invokeWithTarget:forwardInvocation];
+//    } else {
+//        [super forwardInvocation:anInvocation];
+//    }
+//}
 
+//- (void)testInstanceMethod{
+//    Class class = [self class];
+//    Method method = class_getInstanceMethod(class, @selector(testInstanceMethod));
+//    NSString *methodName = NSStringFromSelector(method_getName(method));
+//    NSString *type = [NSString stringWithUTF8String:method_getTypeEncoding(method)];
+//    NSLog(@"name = %@, type = %@",methodName, type);
+//}
+
++ (void)testClassMethod2{
+    NSLog(@"hook  class method test");
+}
 @end

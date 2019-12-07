@@ -7,13 +7,21 @@
 //
 
 #import "ViewController.h"
-#import <objc/runtime.h>
 #import "JTView.h"
 #import "JTNewClassTest.h"
 #import <AFNetworking.h>
 #import "GestureTestView.h"
 #import <RunTimeTest-Swift.h>
 #import "MessageTest.h"
+
+// 要添加的处理未实现实例方法的方法
+void func(id self, SEL sel){
+
+    NSString *className = NSStringFromClass([self class]);
+    NSString *funcName = NSStringFromSelector(sel);
+    NSLog(@"\n  +[%@ %@]:unrecognized selector sent to instance",className,funcName);
+}
+
 
 NSInteger globalVariable = 10;
 static NSInteger staticGlobalVariable = 100;
@@ -24,6 +32,7 @@ typedef void (^DisBlock)(void);
 
 @property (nonatomic,strong)UIWebView *webView;
 @property (nonatomic,strong)NSArray *arr;
+@property (nonatomic,strong)MessageTest *test;
 
 // 返回一个view所属的控制器
 - (UIViewController *)returnTopController: (UIView *)view;
@@ -55,6 +64,20 @@ void imp_submethod2(id self, SEL _cmd){
 }
 
 @implementation ViewController
++ (void)load{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        // 交换方法发生的主体  实例方法是类   类方法是元类
+//        Class class = [self class];;
+//        SEL originalSel = @selector(resolveClassMethod:);
+//        SEL swizzlingSel = @selector(hook_resolveClassMethod:);
+//        [self exchangeMethodWithClass:class OriginalSel:originalSel SwizzlingSel:swizzlingSel IsClassMethod:YES];
+        
+    });
+}
+
+
 // 返回一个view所属的控制器
 - (UIViewController *)returnTopController: (UIView *)view {
     UIView *childView = view;
@@ -118,7 +141,7 @@ void imp_submethod2(id self, SEL _cmd){
         3，当调用类方法时，  会去类的元类中查找
         4，观察类存储结构的定义，  发现有isa和  super两个class类型的数据，  其中isa指向所属的类，super指向父类
      */
-//    [self tesMessage];
+    [self tesMessage];
 }
 - (void)AFNetworkTest{
     
@@ -264,6 +287,18 @@ void imp_submethod2(id self, SEL _cmd){
         NSLog(@"");
     }
 }
+
+
+// 自己添加方法处理
+//+ (BOOL)hook_resolveClassMethod:(SEL)sel{
+//    BOOL asdf = [self hook_resolveClassMethod:sel];
+//    if (!asdf) {
+//        // 添加处理
+//        BOOL result = class_addMethod(object_getClass(self), sel, (IMP)func, "V@:");
+//        return result;
+//    }
+//    return asdf;
+//}
 
 
 /**
@@ -460,13 +495,23 @@ void imp_submethod2(id self, SEL _cmd){
         2，对于class方法，  如果是实例对象调用，返回对象所属的类效果和object_getClass一样。如果是类调用（不管是类和类对象）都返回当前类
      */
     
-//    [MessageTest testClassMethod];
     MessageTest *asdf = [[MessageTest alloc] init];
-    [asdf testInstanceMethod];
-//    [asdf performSelector:@selector(asdfadfasdf:) withObject:nil];
+    [asdf testFunc:@"123"];
+//    [asdf testFunc3:12 P2:@"123"];
+    self.test = asdf;
+    [ViewController classFuncTest];
+    [MessageTest testClassMethod];
+    [self performSelector:@selector(asdfadfasdf:) withObject:nil];
+////
+    UIButton *testButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 200, 100, 100)];
+    testButton.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:testButton];
+    [testButton addTarget:self action:@selector(did) forControlEvents:UIControlEventTouchUpInside];
     
     
 }
+
+
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
