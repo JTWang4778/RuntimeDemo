@@ -14,7 +14,7 @@
     NSLog(@"setMsg");
 }
 - (void)testInstanceMethod{
-    NSLog(@"testInstanceMethod");
+    NSLog(@"完整的消息转发");
 }
 
 @end

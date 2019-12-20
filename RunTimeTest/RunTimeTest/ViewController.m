@@ -499,9 +499,9 @@ void imp_submethod2(id self, SEL _cmd){
     [asdf testFunc:@"123"];
 //    [asdf testFunc3:12 P2:@"123"];
     self.test = asdf;
-    [ViewController classFuncTest];
-    [MessageTest testClassMethod];
-    [self performSelector:@selector(asdfadfasdf:) withObject:nil];
+//    [ViewController classFuncTest];
+//    [MessageTest testClassMethod];
+//    [self performSelector:@selector(asdfadfasdf:) withObject:nil];
 ////
     UIButton *testButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 200, 100, 100)];
     testButton.backgroundColor = [UIColor grayColor];

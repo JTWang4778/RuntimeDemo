@@ -23,14 +23,14 @@ void instanceFunc(id self, SEL sel){
     
 }
 
-// 要添加的处理未实现实例方法的方法
-void classFunc(id self, SEL sel){
-    
-    UnrecognizedMessageManager *manager = [UnrecognizedMessageManager shareManager];
-    NSString *className = NSStringFromClass([manager.currentInstance class]);
-    NSString *funcName = NSStringFromSelector(sel);
-    NSLog(@"\n 🌹 +[%@ %@]:unrecognized selector sent to instance %p",className,funcName, manager.currentInstance);
-}
+//// 要添加的处理未实现实例方法的方法
+//void classFunc(id self, SEL sel){
+//
+//    UnrecognizedMessageManager *manager = [UnrecognizedMessageManager shareManager];
+//    NSString *className = NSStringFromClass([manager.currentInstance class]);
+//    NSString *funcName = NSStringFromSelector(sel);
+//    NSLog(@"\n 🌹 +[%@ %@]:unrecognized selector sent to instance %p",className,funcName, manager.currentInstance);
+//}
 
 
 @implementation UnrecognizedMessageManager
@@ -63,10 +63,10 @@ void classFunc(id self, SEL sel){
     return class_addMethod([self class], sel, (IMP)instanceFunc, "V@:");;
 }
 
-+ (BOOL)resolveClassMethod:(SEL)sel{
-    // 获得元类
-    Class metaClass = object_getClass(self);
-    BOOL result = class_addMethod(metaClass, sel, (IMP)classFunc, "V@:");
-    return result;
-}
+//+ (BOOL)resolveClassMethod:(SEL)sel{
+//    // 获得元类
+//    Class metaClass = object_getClass(self);
+//    BOOL result = class_addMethod(metaClass, sel, (IMP)classFunc, "V@:");
+//    return result;
+//}
 @end
